@@ -1,5 +1,6 @@
 const usermodel=require('../models/user.model');
 const jwt=require('jsonwebtoken');
+const emailservice=require("../services/email.services");
 
 async function registerUser(req,res){
     try{
@@ -17,6 +18,7 @@ async function registerUser(req,res){
             email:user.email,
             name:user.name
         },token})
+        await emailservice.sendregistrationEmail(user.email,user.name);
     }catch(error){
         console.error("Error in registerUser:",error);
         res.status(500).json({Message:"Internal Server Error",Status:"Failed",error:error.message});
