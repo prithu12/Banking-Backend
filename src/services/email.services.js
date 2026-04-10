@@ -46,4 +46,3 @@ async function sendregistrationEmail(username, name) {
 }
 
 module.exports = {sendEmail, sendregistrationEmail};
-module.exports = transporter;

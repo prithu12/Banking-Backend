@@ -41,7 +41,7 @@ async function loginUser(req,res){
             _id:user._id,
             email:user.email,
             name:user.name
-        },token});
+        },token})
     }catch(error){
         console.error("Error in loginUser:",error);
         res.status(500).json({Message:"Internal Server Error",Status:"Failed",error:error.message});
