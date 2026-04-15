@@ -49,4 +49,20 @@ async function loginUser(req,res){
     }
 }
 
-module.exports={registerUser,loginUser};
+async function logoutUser(req,res){
+    try{
+        res.clearCookie("token");
+        return res.status(200).json({
+            message:"Logged out successfully"
+        });
+    }catch(error){
+        console.error("Error in logoutUser:",error);
+        return res.status(500).json({
+            Message:"Internal Server Error",
+            Status:"Failed",
+            error:error.message
+        });
+    }
+}
+
+module.exports={registerUser,loginUser,logoutUser};
