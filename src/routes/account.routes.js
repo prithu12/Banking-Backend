@@ -3,4 +3,6 @@ const {authMiddleware}=require('../middleware/auth.middleware');
 const accountController=require('../controllers/account.controller');
 const router=express.Router();
 router.post("/",authMiddleware,accountController.createAccount);
+router.get("/",authMiddleware,accountController.getUserAccounts);
+router.get("/balance/:accountId",authMiddleware,accountController.getAccountBalance);
 module.exports=router;
